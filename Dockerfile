@@ -8,7 +8,7 @@ ENV V2RAY_PLUGIN_URL https://github.com/shadowsocks/v2ray-plugin/releases/downlo
 
 RUN set -ex \
     && apk add --no-cache c-ares \
-                          libcrypto1.0 \
+                          libressl \
                           libev \
                           libsodium \
                           mbedtls \
