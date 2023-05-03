@@ -1,5 +1,4 @@
 FROM alpine
-MAINTAINER Eugene Konstantinov
 
 ENV SS_VER 3.3.5
 ENV SS_URL https://github.com/shadowsocks/shadowsocks-libev/archive/v$SS_VER.tar.gz
