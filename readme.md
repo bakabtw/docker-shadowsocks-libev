@@ -14,14 +14,14 @@ docker build -t bakabtw/shadowsocks-libev .
 Get the docker image by running the following commands:
 
 ```bash
-docker pull nickleefly/shadowsocks-libev:3.3.0
+docker pull bakabtw/shadowsocks-libev
 ```
 
-Start a instance:
+Start an instance:
 
 ```bash
 docker run -d --name=shadowsocks-libev -p 8388:8388/tcp -p 8388:8388/udp \
---restart=always nickleefly/shadowsocks-libev:3.3.0
+--restart=always bakabtw/shadowsocks-libev
 ```
 or
 
@@ -33,10 +33,10 @@ docker run -d \
 -p 8388:8388/tcp \
 -p 8388:8388/udp \
 --restart=always \
-nickleefly/shadowsocks-libev:3.3.0
+bakabtw/shadowsocks-libev:3.3.0
 ```
 
-Use shell
+You can also use a bash script for launching shadowsocks-libev container:
 
 ```
 ## Create a container named shadowsocks-8080 with port 8080 published
@@ -48,7 +48,7 @@ docker kill shadowsocks-8080
 
 ## Setting a specific configration
 
-You can use environment variables to specific configration.
+You can use environment variables for specific configration.
 
 For example, start a container with encrypt method `aes-256-gcm` and password `YourPassword`:
 
@@ -60,7 +60,7 @@ docker run -d \
 -p 8388:8388/tcp \
 -p 8388:8388/udp \
 --restart=always \
-nickleefly/shadowsocks-libev:3.3.0
+bakabtw/shadowsocks-libev
 ```
 
 Available environment variables and default values:
@@ -87,10 +87,10 @@ docker run -d \
 -p 8388:8388/tcp \
 -p 8388:8388/udp \
 --restart=always \
-nickleefly/shadowsocks-libev:3.3.0-1.1.0
+bakabtw/shadowsocks-libev
 ```
 
-*Attentions: if you want to enable v2ray-plugin QUIC mode, you must disable the UDP relay of ss-server, without `-u` argument in `ARGS`.*
+*Attention: if you want to enable v2ray-plugin QUIC mode, you must disable the UDP relay of ss-server by launching it without `-u` argument in `ARGS`.*
 
 Enable v2ray-plugin with TLS mode and enable UDP relay:
 ```sh
@@ -102,7 +102,7 @@ docker run -d \
 -p 8388:8388/tcp \
 -p 8388:8388/udp \
 --restart=always \
-nickleefly/shadowsocks-libev:3.3.0-1.1.0
+bakabtw/shadowsocks-libev
 ```
 
 Remember mount your certs to container
@@ -128,7 +128,7 @@ version: "3.7"
 services:
   shadowsocks-libev:
     container_name: shadowsocks-libev
-    image: nickleefly/shadowsocks-libev:3.3.0-1.1.0
+    image: bakabtw/shadowsocks-libev
     ports:
       - "8388:8388/tcp"
       - "8388:8388/udp"
