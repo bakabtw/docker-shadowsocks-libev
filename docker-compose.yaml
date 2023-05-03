@@ -1,11 +1,21 @@
 version: '3'
+
 services:
-  server:
-    image: nickleefly/shadowsocks-libev
-    ports:
-      - "8443:8388/tcp"
-      - "8443:8388/udp"
+  shadowsocks:
+    image: bakabtw/shadowsocks-libev
+    container_name: shadowsocks
+    restart: unless-stopped
     environment:
       - METHOD=chacha20-ietf-poly1305
       - PASSWORD=ARe@lSecurePa44word!
-    restart: always
+    ports:
+      - "8443:8388/tcp"
+      - "8443:8388/udp"
+ 
+  shadowsocks-v2ray:
+    image: bakabtw/shadowsocks-libev
+    container_name: shadowsocks-v2ray
+    restart: unless-stopped
+    environment:
+      - PASSWORD=password
+      - ARGS=--plugin v2ray-plugin --plugin-opts server;
